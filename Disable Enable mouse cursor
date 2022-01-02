@@ -1,0 +1,31 @@
+# check devices
+xinput --list
+
+# list details for the mouse (id=9)
+xinput --list-props 9
+
+# Don't forget about touchpad and stick
+xinput --list-props 12
+xinput --list-props 13
+
+####
+
+# Disable mouse cursor
+export DISPLAY=:0
+xinput set-int-prop 9 "Device Enabled" 8 0
+xinput set-int-prop 12 "Device Enabled" 8 0
+xinput set-int-prop 13 "Device Enabled" 8 0
+
+# Enable mouse cursor
+xinput set-int-prop 9 "Device Enabled" 8 1
+xinput set-int-prop 12 "Device Enabled" 8 1
+xinput set-int-prop 13 "Device Enabled" 8 1
+
+# When cursor is disabled it's good to hide it with unclutter
+pacman -S unclutter
+man unclutter # for information
+
+####
+
+# Steps above turns off/on mouse cursor. 
+# Any device can be disabled
