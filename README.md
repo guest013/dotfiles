@@ -7,22 +7,20 @@ Currently used DE - i3.
 
 **Disable/Enable mouse cursor**
 
-# check devices
+check devices
 xinput --list
 
-# list details for the Mouse (id=9)
+list details for the Mouse (id=9)
 xinput --list-props 9
 
-# Don't forget about TouchPad and Stick
-xinput --list-props 12
-xinput --list-props 13
+Don't forget about TouchPad and Stick
+"xinput --list-props 12
+xinput --list-props 13"
 
 
-# When cursor is disabled it's good to hide it with unclutter
+When cursor is disabled it's good to hide it with unclutter
 pacman -S unclutter
 man unclutter # for information
 
-####
-
-# Scripts added. They turn off/on mouse cursor. 
-# Any device can be disabled. I accidentally disabled keyboard in previous version of scripts
+Scripts added. They turn off/on mouse cursor. 
+Any device can be disabled. I accidentally disabled keyboard in previous version of scripts
