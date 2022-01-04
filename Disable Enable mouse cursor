@@ -1,25 +1,38 @@
 # check devices
 xinput --list
 
-# list details for the mouse (id=9)
+# list details for the Mouse (id=9)
 xinput --list-props 9
 
-# Don't forget about touchpad and stick
+# Don't forget about TouchPad and Stick
 xinput --list-props 12
 xinput --list-props 13
 
-####
+#### scripts
 
 # Disable mouse cursor
+
+let mouse=`xinput --list | awk '/Mouse/{print $6}' | grep [0-9]`
+let tpad=`xinput --list | awk '/TouchPad/{print $7}' | grep [0-9]`
+let stick=`xinput --list | awk '/Stick/{print $7}' | grep [0-9]`
+
 export DISPLAY=:0
-xinput set-int-prop 9 "Device Enabled" 8 0
-xinput set-int-prop 12 "Device Enabled" 8 0
-xinput set-int-prop 13 "Device Enabled" 8 0
+
+xinput set-int-prop $mouse "Device Enabled" 8 0
+xinput set-int-prop $tpad "Device Enabled" 8 0
+xinput set-int-prop $stick "Device Enabled" 8 0
+
 
 # Enable mouse cursor
-xinput set-int-prop 9 "Device Enabled" 8 1
-xinput set-int-prop 12 "Device Enabled" 8 1
-xinput set-int-prop 13 "Device Enabled" 8 1
+
+let mouse=`xinput --list | awk '/Mouse/{print $6}' | grep [0-9]`
+let tpad=`xinput --list | awk '/TouchPad/{print $7}' | grep [0-9]`
+let stick=`xinput --list | awk '/Stick/{print $7}' | grep [0-9]`
+
+xinput set-int-prop $mouse "Device Enabled" 8 1
+xinput set-int-prop $tpad "Device Enabled" 8 1
+xinput set-int-prop $stic "Device Enabled" 8 1
+
 
 # When cursor is disabled it's good to hide it with unclutter
 pacman -S unclutter
@@ -28,4 +41,4 @@ man unclutter # for information
 ####
 
 # Steps above turns off/on mouse cursor. 
-# Any device can be disabled
+# Any device can be disabled. I accidentally disabled keyboard in previous version of scripts
