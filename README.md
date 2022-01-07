@@ -7,6 +7,8 @@ Currently used DE - i3.
 
 **Disable/Enable mouse cursor**
 
+Very often, while working, I accidentally touch the mouse (or touchpad) and this mouse pointer annoys me, so I decided to lock it. 
+
 check devices
 xinput --list
 
